@@ -3,3 +3,8 @@
 *.zwc.old
 modules/*/cache.zsh
 contrib
+opencode/.oh-my-opencode-slim/
+opencode/node_modules/
+opencode/package.json
+opencode/package-lock.json
+opencode/bun.lock

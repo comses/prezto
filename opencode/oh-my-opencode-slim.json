@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/comses-education/oh-my-opencode-slim/HEAD/oh-my-opencode-slim.schema.json",
+  "preset": "openai",
+  "presets": {
+    "openai": {
+      "orchestrator": {
+        "model": "openai/gpt-5.6-terra",
+        "variant": "high",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
+      },
+      "oracle": {
+        "model": "openai/gpt-5.6-sol",
+        "variant": "high",
+        "skills": [
+          "simplify"
+        ],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "openai/gpt-5.6-luna",
+        "variant": "medium",
+        "skills": [],
+        "mcps": [
+          "context7",
+          "gh_grep"
+        ]
+      },
+      "explorer": {
+        "model": "openai/gpt-5.6-luna",
+        "variant": "low",
+        "skills": [],
+        "mcps": []
+      },
+      "designer": {
+        "model": "openai/gpt-5.6-terra",
+        "variant": "medium",
+        "skills": [],
+        "mcps": []
+      },
+      "fixer": {
+        "model": "openai/gpt-5.4-mini-fast",
+        "variant": "medium",
+        "skills": [],
+        "mcps": []
+      }
+    },
+    "asu-rto": {
+      "orchestrator": {
+        "model": "asu-rto/glm-5-2",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
+      },
+      "oracle": {
+        "model": "asu-rto/glm-5-2",
+        "skills": [
+          "simplify"
+        ],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "asu-rto/qwen35-27b",
+        "skills": [],
+        "mcps": [
+          "context7",
+          "gh_grep"
+        ]
+      },
+      "explorer": {
+        "model": "asu-rto/qwen35-27b",
+        "skills": [],
+        "mcps": []
+      },
+      "designer": {
+        "model": "asu-rto/gemma4-31b-it",
+        "skills": [],
+        "mcps": []
+      },
+      "fixer": {
+        "model": "asu-rto/kimi-k2-7-code",
+        "skills": [],
+        "mcps": []
+      },
+      "observer": {
+        "model": "asu-rto/gemma4-31b-it",
+        "skills": [],
+        "mcps": []
+      }
+    },
+    "omf-asu-rto": {
+      "orchestrator": {
+        "model": "asu-rto/glm-5-2",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
+      },
+      "oracle": {
+        "model": "asu-rto/glm-5-2",
+        "skills": [
+          "simplify",
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "asu-rto/qwen35-27b",
+        "skills": [
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": [
+          "context7",
+          "gh_grep"
+        ]
+      },
+      "explorer": {
+        "model": "asu-rto/qwen35-27b",
+        "skills": [
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": []
+      },
+      "designer": {
+        "model": "asu-rto/gemma4-31b-it",
+        "skills": [
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": []
+      },
+      "fixer": {
+        "model": "asu-rto/kimi-k2-7-code",
+        "skills": [
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": []
+      },
+      "observer": {
+        "model": "asu-rto/gemma4-31b-it",
+        "skills": [
+          "omfa",
+          "omfb",
+          "fair",
+          "document",
+          "hpc",
+          "ospool",
+          "peer-review"
+        ],
+        "mcps": []
+      }
+    },
+    "opencode-go": {
+      "orchestrator": {
+        "model": "opencode-go/minimax-m3",
+        "variant": "thinking",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
+      },
+      "oracle": {
+        "model": "opencode-go/qwen3.7-max",
+        "variant": "max",
+        "skills": [
+          "simplify"
+        ],
+        "mcps": []
+      },
+      "explorer": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "high",
+        "skills": [],
+        "mcps": []
+      },
+      "librarian": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "high",
+        "skills": [],
+        "mcps": [
+          "context7",
+          "gh_grep"
+        ]
+      },
+      "designer": {
+        "model": "opencode-go/kimi-k2.7-code",
+        "skills": [],
+        "mcps": []
+      },
+      "fixer": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "high",
+        "skills": [],
+        "mcps": []
+      },
+      "observer": {
+        "model": "opencode-go/mimo-v2.5",
+        "skills": [],
+        "mcps": []
+      }
+    }
+  }
+}

@@ -29,3 +29,6 @@
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "opencode/oh-my-opencode-slim"]
+	path = opencode/oh-my-opencode-slim
+	url = https://github.com/comses-education/oh-my-opencode-slim
