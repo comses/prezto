@@ -40,7 +40,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'python' \
   'git' \
-  'gpg' \
+  'ssh' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
