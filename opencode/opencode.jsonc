@@ -16,19 +16,36 @@
       },
       "models": {
         "gemma4-31b-it": {
-          "name": "Gemma 4 31B IT"
+          "name": "Gemma 4 31B IT",
+          "limit": { "context": 80000, "input": 64000, "output": 16000 }
         },
         "glm-5-2": {
-          "name": "GLM-5.2"
+          "name": "GLM-5.2",
+          "limit": { "context": 160000, "input": 136000, "output": 24000 }
         },
         "kimi-k2-7-code": {
-          "name": "Kimi K2.7 Code"
+          "name": "Kimi K2.7 Code",
+          "limit": { "context": 80000, "input": 64000, "output": 16000 }
         },
         "laguna-s-2-1": {
-          "name": "Laguna S 2.1"
+          "name": "Laguna S 2.1",
+          "limit": { "context": 80000, "input": 64000, "output": 16000 }
         },
         "qwen35-27b": {
-          "name": "Qwen 3.5 27B"
+          "name": "Qwen 3.5 27B",
+          "limit": { "context": 160000, "input": 136000, "output": 24000 }
+        },
+        "north-mini-code": {
+          "name": "North Mini Code",
+          "limit": { "context": 160000, "input": 136000, "output": 24000 }
+        },
+        "ornith-1-0-35b": {
+          "name": "Ornith 1.0 35B",
+          "limit": { "context": 160000, "input": 136000, "output": 24000 }
+        },
+        "qwen3-v1-32b-thinking": {
+          "name": "Qwen 3 v1 32B Thinking",
+          "limit": { "context": 80000, "input": 64000, "output": 16000 }
         }
       }
     }
