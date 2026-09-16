@@ -21,7 +21,11 @@
         },
         "glm-5-2": {
           "name": "GLM-5.2",
-          "limit": { "context": 160000, "input": 96000, "output": 24000 }
+          "limit": { "context": 90000, "input": 96000, "output": 24000 }
+        },
+        "qwen3-coder-30b-a3b-instruct": {
+            "name": "qwen3 coder 30b a3b instruct",
+            "limit": { "context": 80000, "input": 68000, "output": 12000 }
         },
         "kimi-k2-7-code": {
           "name": "Kimi K2.7 Code",
@@ -43,8 +47,8 @@
           "name": "Ornith 1.0 35B",
           "limit": { "context": 160000, "input": 136000, "output": 24000 }
         },
-        "qwen3-v1-32b-thinking": {
-          "name": "Qwen 3 v1 32B Thinking",
+        "qwen3-vl-32b-thinking": {
+          "name": "Qwen3vl 32b-thonk",
           "limit": { "context": 80000, "input": 64000, "output": 16000 }
         }
       }

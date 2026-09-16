@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/comses-education/oh-my-opencode-slim/HEAD/oh-my-opencode-slim.schema.json",
-  "preset": "omf-asu-rto",
+  "preset": "openai",
   "disabled_agents": [
     "observer"
   ],
@@ -73,7 +73,7 @@
         "mcps": []
       },
       "librarian": {
-        "model": "asu-rto/ornith-1-0-35b",
+        "model": "asu-rto/qwen3-coder-30b-a3b-instruct",
         "variant": "low",
         "skills": [],
         "mcps": [
@@ -82,7 +82,7 @@
         ]
       },
       "explorer": {
-        "model": "opencode/x-preview-f-free",
+        "model": "asu-rto/north-mini-code",
         "variant": "low",
         "skills": [],
         "mcps": []
@@ -130,7 +130,7 @@
         "mcps": []
       },
       "librarian": {
-        "model": "asu-rto/ornith-1-0-35b",
+        "model": "asu-rto/qwen3-coder-30b-a3b-instruct",
         "variant": "low",
         "skills": [
           "omfa",
@@ -147,7 +147,7 @@
         ]
       },
       "explorer": {
-        "model": "opencode/x-preview-f-free",
+        "model": "asu-rto/north-mini-code",
         "variant": "low",
         "skills": [
           "omfa",
