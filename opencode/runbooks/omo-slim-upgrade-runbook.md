@@ -41,8 +41,10 @@ The expected active preset is `asu-rto`.
 
 ## Safety rules
 
-- Close all running OpenCode processes before upgrading. A running process does
-  not reload rebuilt plugin code or changed presets.
+- Close normal OpenCode sessions before upgrading when practical. An automated
+  agent may perform the upgrade from its active OpenCode session, but that
+  session will keep the old CLI and plugin code in memory and must not be used
+  as post-restart verification.
 - Do not use `git reset --hard`, `git clean`, force updates, or automatic merge
   conflict resolution.
 - Do not overwrite or regenerate `oh-my-opencode-slim.json` during a routine
@@ -88,9 +90,11 @@ test -x ~/.config/opencode/oh-my-opencode-slim/node_modules/.bin/bun
 ~/.config/opencode/oh-my-opencode-slim/node_modules/.bin/bun --version
 ```
 
-If that executable is absent, use an approved Bun installation matching the
-`packageManager` version in the plugin's `package.json`. Stop rather than
-silently substituting another package manager or rewriting the lockfile.
+If that executable is absent, use an approved global Bun installation. Prefer
+the `packageManager` version in the plugin's `package.json`; a newer Bun is
+acceptable when `bun install --frozen-lockfile` and the complete build pass and
+the checkout remains clean. Stop rather than substituting another package
+manager or accepting lockfile changes.
 
 ## Upgrade procedure
 
@@ -169,22 +173,27 @@ required.
 ### 4. Validate OmO Slim configuration
 
 Run the CLI built from the local checkout, not an independently downloaded npm
-version. Run it from the project where OpenCode will be used:
+version. For a global configuration check, run it from the home directory so
+the result does not depend on an unrelated project's local OpenCode config:
 
 ```sh
-cd /home/alllee/work/comses/infrastructure
+cd ~
 node ~/.config/opencode/oh-my-opencode-slim/dist/cli/index.js doctor
 ```
 
 Expected result:
 
 ```text
-[user] /home/alllee/.config/opencode/oh-my-opencode-slim.json <success>
+[user] <home>/.config/opencode/oh-my-opencode-slim.json <success>
 [project] No config file found
 [preset] asu-rto <success>
 ```
 
 The CLI currently renders `<success>` as a check mark.
+
+If a specific project's overrides also need validation, repeat `doctor` from
+that project as a separate check. The global upgrade itself does not depend on
+any application repository.
 
 This checks configuration syntax and preset existence only. Continue to the
 runtime checks even when it passes.
@@ -255,19 +264,25 @@ plugin. Check the resolved plugin path:
 opencode debug config
 ```
 
-The `plugin` list should include:
+The `plugin` list should include a file URL for the configured local checkout,
+typically:
 
 ```text
-file:///home/alllee/.config/opencode/oh-my-opencode-slim
+file:///home/<user>/.config/opencode/oh-my-opencode-slim
 ```
+
+The displayed URL may instead contain the resolved symlink target. Compare it
+with the path reported by the preflight `readlink -f` command.
 
 Then verify the entry point and rebuild:
 
 ```sh
 test -f ~/.config/opencode/oh-my-opencode-slim/dist/index.js
-~/.config/opencode/oh-my-opencode-slim/node_modules/.bin/bun \
-  --cwd ~/.config/opencode/oh-my-opencode-slim run build
+bun --cwd ~/.config/opencode/oh-my-opencode-slim run build
 ```
+
+If preflight selected a checkout-local Bun, substitute that executable for
+`bun` here and in the rollback commands.
 
 Repeat `opencode debug agent orchestrator` after the build.
 
@@ -299,9 +314,10 @@ Read the required version without modifying the checkout:
 node -p "require(process.env.HOME + '/.config/opencode/oh-my-opencode-slim/package.json').packageManager"
 ```
 
-Install that Bun version through the workstation's approved tool-management
-method, then repeat dependency installation and the build. Do not run
-`npm install` as a replacement for the locked Bun workflow.
+Install Bun through the workstation's approved tool-management method, then
+repeat dependency installation and the build. Prefer the declared version, but
+a newer Bun is acceptable under the verification rules above. Do not use npm
+inside the checkout as a replacement for the locked Bun workflow.
 
 ### Build or runtime verification fails after upgrading
 
@@ -319,10 +335,8 @@ checkout is clean, then select the previous commit and rebuild it:
 
 ```sh
 git -C ~/.config/opencode/oh-my-opencode-slim switch --detach <previous-omo-commit>
-~/.config/opencode/oh-my-opencode-slim/node_modules/.bin/bun \
-  --cwd ~/.config/opencode/oh-my-opencode-slim install --frozen-lockfile
-~/.config/opencode/oh-my-opencode-slim/node_modules/.bin/bun \
-  --cwd ~/.config/opencode/oh-my-opencode-slim run build
+bun --cwd ~/.config/opencode/oh-my-opencode-slim install --frozen-lockfile
+bun --cwd ~/.config/opencode/oh-my-opencode-slim run build
 ```
 
 If OpenCode itself must be rolled back:
@@ -346,4 +360,5 @@ The maintenance is complete only when all of the following are true:
 - Every enabled agent resolves to the expected model mapping above.
 - Observer remains disabled.
 - The OmO Slim Git checkout is clean.
-- OpenCode is restarted after the upgrade.
+- A fresh OpenCode process is started after the upgrade; the upgrading session
+  is not reused for normal work.
