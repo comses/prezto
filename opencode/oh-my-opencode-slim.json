@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/comses-education/oh-my-opencode-slim/HEAD/oh-my-opencode-slim.schema.json",
-  "preset": "openai",
+  "preset": "asu-rto",
   "disabled_agents": [
     "observer"
   ],
