@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/comses-education/oh-my-opencode-slim/HEAD/oh-my-opencode-slim.schema.json",
-  "preset": "asu-rto",
+  "preset": "omf-asu-rto",
   "disabled_agents": [
     "observer"
   ],
@@ -93,7 +93,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "asu-rto/qwen38-27b",
+        "model": "openai/gpt-5.6-luna",
         "skills": [],
         "mcps": []
       },
@@ -130,7 +130,7 @@
         "mcps": []
       },
       "librarian": {
-        "model": "asu-rto/qwen3-coder-30b-a3b-instruct",
+        "model": "openai/gpt-5.6-luna",
         "variant": "low",
         "skills": [
           "omfa",
@@ -174,7 +174,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "asu-rto/qwen38-27b",
+        "model": "openai/gpt-5.6-luna",
         "skills": [
           "omfa",
           "omfb",
